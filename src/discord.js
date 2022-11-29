@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import fetch from 'node-fetch';
 
 import * as storage from './storage.js';
 import config from './config.js';
@@ -89,6 +90,7 @@ export async function getAccessToken(userId, tokens) {
       throw new Error(`Error refreshing access token: [${response.status}] ${response.statusText}`);
     }
   }
+  return tokens.access_token;
 }
 
 /**
@@ -123,7 +125,7 @@ export async function pushMetadata(userId, tokens, metadata) {
   };
   const response = await fetch(url, {
     method: 'PUT',
-    body,
+    body: JSON.stringify(body),
     headers: {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
