@@ -10,8 +10,8 @@ const url = `https://discord.com/api/v10/applications/${config.DISCORD_CLIENT_ID
 const body = [
   {
     key: 'verified',
-    name: 'ID is verified as a contributor',
-    description: 'Cookies Eaten Greater Than',
+    name: 'Contributor Verification',
+    description: 'ID verification',
     type: 2,
   }
 ];

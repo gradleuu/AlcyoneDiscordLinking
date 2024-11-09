@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import config from './config.js';
 import * as discord from './discord.js';
 import * as storage from './storage.js';
+import contributorList from './storage.js';
 
 /**
  * Main HTTP server used for the bot.
@@ -73,7 +74,7 @@ app.get('/linked-role', async (req, res) => {
     // 3. Update the users metadata, assuming future updates will be posted to the `/update-metadata` endpoint
     await updateMetadata(userId);
 
-    res.send('You did it!  Now go back to Discord.');
+    res.send('Role "Contributor" was successfully granted');
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
@@ -101,33 +102,32 @@ app.get('/linked-role', async (req, res) => {
  * metadata endpoint. 
  */
 async function updateMetadata(userId) {
+
   // Fetch the Discord tokens from storage
   const tokens = await storage.getDiscordTokens(userId);
     
   let metadata = {};
   try {
-    // Fetch the new metadata you want to use from an external source. 
-    // This data could be POST-ed to this endpoint, but every service
-    // is going to be different.  To keep the example simple, we'll
-    // just generate some random data. 
+    // Fetch or generate metadata
     metadata = {
       verified: true,
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;
     console.error(e);
-    // If fetching the profile data for the external service fails for any reason,
-    // ensure metadata on the Discord side is nulled out. This prevents cases
-    // where the user revokes an external app permissions, and is left with
-    // stale linked role data.
   }
-
+  
+  // Only proceed if userId is one of the allowed values
+  if (!contributorList.includes(userId)) {
+    await discord.pushMetadata(null, null, null);
+    console.log(`User ${userId} is not authorized to receive metadata.`);
+  } else {
   // Push the data to Discord.
   await discord.pushMetadata(userId, tokens, metadata);
+  }
 }
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
