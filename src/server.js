@@ -73,7 +73,7 @@ app.get('/linked-role', async (req, res) => {
     // 3. Update the users metadata, assuming future updates will be posted to the `/update-metadata` endpoint
     await updateMetadata(userId);
 
-    res.send('Role "Contributor" was successfully granted');
+    res.send('You can go back to Discord now, Somnacreare is connected');
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
@@ -109,8 +109,8 @@ async function updateMetadata(userId) {
   try {
     // Fetch or generate metadata
     metadata = {
-      isDeveloper: storage.getDeveloperList().includes(userId),
-      isContributor: storage.getContributorList().includes(userId),
+      isdeveloper: storage.isDeveloper(userId),
+      iscontributor: storage.isContributor(userId),
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;

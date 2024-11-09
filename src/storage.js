@@ -9,12 +9,12 @@ const developerList = [
   "1115633140204052582"
 ]
 
-export function getContributorList() {
-  return contributorList;
+export function isContributor(userId) { 
+  return contributorList.includes(userId);
 }
 
-export function getDeveloperList() {
-  return contributorList;
+export function isDeveloper(userId) {
+  return developerList.includes(userId);
 }
 
 export async function storeDiscordTokens(userId, tokens) {
