@@ -10,8 +10,12 @@ const developerList = [
   "1115633140204052582"
 ]
 
-const apoovedList = [
-  "1115633140204052582"
+const socialFirstStaffList = [
+  "1273204997013897279"
+]
+
+const moderatorsList = [
+  "1273204997013897279"
 ]
 
 export function isContributor(userId) { 
@@ -22,8 +26,12 @@ export function isDeveloper(userId) {
   return developerList.includes(userId);
 }
 
-export function isApooved(userId) {
-  return apoovedList.includes(userId);
+export function isSfS(userId) {
+  return socialFirstStaffList.includes(userId);
+}
+
+export function isModerator(userId) {
+  return moderatorsList.includes(userId);
 }
 
 export async function storeDiscordTokens(userId, tokens) {

@@ -19,6 +19,18 @@ const body = [
     name: 'Contributor',
     description: 'Must be Contributor',
     type: 7,
+  },
+  {
+    key: 'ismod',
+    name: 'Moderator',
+    description: 'Must be Moderator',
+    type: 7,
+  },
+  {
+    key: 'issfs',
+    name: 'Social First Staff',
+    description: 'Must be Social First Staff (Mod/Dev)',
+    type: 7,
   }
 ];
 
