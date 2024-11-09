@@ -109,21 +109,16 @@ async function updateMetadata(userId) {
   try {
     // Fetch or generate metadata
     metadata = {
-      verified: true,
+      isDeveloper: storage.getDeveloperList().includes(userId),
+      isContributor: storage.getContributorList().includes(userId),
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;
     console.error(e);
   }
   
-  // Only proceed if userId is one of the allowed values
-  if (!storage.getContributorList().includes(userId)) {
-    await discord.pushMetadata(null, null, null);
-    console.log(`User ${userId} is not authorized to receive metadata.`);
-  } else {
-  // Push the data to Discord.
+  
   await discord.pushMetadata(userId, tokens, metadata);
-  }
 }
 
 const port = process.env.PORT || 3000;
