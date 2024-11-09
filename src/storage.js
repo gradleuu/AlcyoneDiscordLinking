@@ -2,7 +2,8 @@
 const store = new Map();
 
 const contributorList = [
-  "1273204997013897279"
+  "1273204997013897279",
+  "660917034766565377"
 ]
 
 const developerList = [
