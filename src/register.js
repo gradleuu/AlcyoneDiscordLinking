@@ -19,12 +19,6 @@ const body = [
     name: 'Contributor',
     description: 'Must be Contributor',
     type: 7,
-  },
-  {
-    key: 'isapooved',
-    name: 'Ap(r)oov',
-    description: 'Must be Apooved',
-    type: 7,
   }
 ];
 
