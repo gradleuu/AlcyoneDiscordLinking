@@ -1,19 +1,19 @@
 {
-  "name": "linked-role-bot",
+  "name": "Somnacreare",
   "version": "1.0.0",
   "private": "true",
   "type": "module",
   "engines": {
     "node": ">=16"
   },
-  "description": "A very simple example of a Linked Role bot for Discord.",
+  "description": "ID verification tool",
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Justin Beckwith <justin.beckwith@discordapp.com>",
+  "author": "Poster <postervologin@proton.me>",
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.6",

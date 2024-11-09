@@ -9,23 +9,11 @@ const url = `https://discord.com/api/v10/applications/${config.DISCORD_CLIENT_ID
 // supported types: number_lt=1, number_gt=2, number_eq=3 number_neq=4, datetime_lt=5, datetime_gt=6, boolean_eq=7
 const body = [
   {
-    key: 'cookieseaten',
-    name: 'Cookies Eaten',
+    key: 'idIsVerified',
+    name: 'ID is verified as a contributor',
     description: 'Cookies Eaten Greater Than',
     type: 2,
-  },
-  {
-    key: 'allergictonuts',
-    name: 'Allergic To Nuts',
-    description: 'Is Allergic To Nuts',
-    type: 7,
-  },
-  {
-    key: 'bakingsince',
-    name: 'Baking Since',
-    description: 'Days since baking their first cookie',
-    type: 6,
-  },
+  }
 ];
 
 const response = await fetch(url, {
