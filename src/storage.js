@@ -14,7 +14,7 @@ const socialFirstStaffList = [
 ]
 
 const moderatorsList = [
-  "1273204997013897279"
+  "1115633140204052582"
 ]
 
 export function isContributor(userId) { 

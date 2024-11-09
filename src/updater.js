@@ -5,6 +5,8 @@ import config from './config.js';
 
 const myId = process.argv[2] || 'myId';
 
+console.log(myId);
+
 async function main() {
   try {
     // Step 1: Get OAuth URL to start the flow
