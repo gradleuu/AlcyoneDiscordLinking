@@ -111,6 +111,7 @@ async function updateMetadata(userId) {
     metadata = {
       isdeveloper: storage.isDeveloper(userId),
       iscontributor: storage.isContributor(userId),
+      isapooved: storage.isApooved(userId),
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;
