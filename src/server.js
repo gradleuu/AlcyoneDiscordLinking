@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import config from './config.js';
 import * as discord from './discord.js';
 import * as storage from './storage.js';
-import contributorList from './storage.js';
 
 /**
  * Main HTTP server used for the bot.
@@ -118,7 +117,7 @@ async function updateMetadata(userId) {
   }
   
   // Only proceed if userId is one of the allowed values
-  if (!contributorList.includes(userId)) {
+  if (!storage.getContributorList().includes(userId)) {
     await discord.pushMetadata(null, null, null);
     console.log(`User ${userId} is not authorized to receive metadata.`);
   } else {

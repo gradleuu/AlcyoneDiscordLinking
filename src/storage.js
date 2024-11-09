@@ -6,6 +6,10 @@ const contributorList = [
   "1273204997013897279"
 ]
 
+export function getContributorList() {
+  return contributorList;
+}
+
 export async function storeDiscordTokens(userId, tokens) {
   await store.set(`discord-${userId}`, tokens);
 }
