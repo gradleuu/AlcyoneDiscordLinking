@@ -12,9 +12,14 @@ const dbUri =
   "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
 
 mongoose
-  .connect(dbUri)
-  .then((result) => console.log("Connected to Mongo"))
-  .catch((err) => console.log(err));
+  .connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    connectTimeoutMS: 30000,  // Set connection timeout to 30 seconds
+    socketTimeoutMS: 45000,   // Set socket timeout to 45 seconds
+  })
+  .then(() => console.log("Connected to Mongo"))
+  .catch((err) => console.log("MongoDB connection error:", err));
 
 /**
  * Main HTTP server used for the bot.
@@ -60,11 +65,9 @@ app.get("/linked-role", async (req, res) => {
  */
 app.get("/discord-oauth-callback", async (req, res) => {
   try {
-    // 1. Uses the code and state to acquire Discord OAuth2 tokens
     const code = req.query["code"];
     const discordState = req.query["state"];
 
-    // make sure the state parameter exists
     const { clientState } = req.signedCookies;
     if (clientState !== discordState) {
       console.error("State verification failed.");
@@ -72,8 +75,6 @@ app.get("/discord-oauth-callback", async (req, res) => {
     }
 
     const tokens = await discord.getOAuthTokens(code);
-
-    // 2. Uses the Discord Access Token to fetch the user profile
     const meData = await discord.getUserData(tokens);
     const userId = meData.user.id;
     await storage.storeDiscordTokens(userId, {
@@ -84,19 +85,17 @@ app.get("/discord-oauth-callback", async (req, res) => {
 
     const newStaff = new SomnaStaff({
       userId: userId,
-      accessToken: tokens,
+      accessToken: JSON.stringify(tokens),
     });
 
-    newStaff
-      .save()
-      .then((result) => res.send(result))
-      .catch((err) => console.log(err));
+    await newStaff.save(); // save to database
     console.log(tokens);
     console.log(userId);
 
-    // 3. Update the users metadata, assuming future updates will be posted to the `/update-metadata` endpoint
+    // 3. Update the user's metadata
     await updateMetadata(userId);
 
+    // Only send one response here
     res.send("You can go back to Discord now");
   } catch (e) {
     console.error(e);
