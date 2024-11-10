@@ -5,7 +5,8 @@ import mongoose from "mongoose";
 import config from "./config.js";
 import * as discord from "./discord.js";
 import * as storage from "./storage.js";
-import * as somnaStaff from "./somnaStaff.js";
+
+import SomnaStaff from "./somnaStaff.js";
 
 const dbUri =
   "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
@@ -86,7 +87,10 @@ app.get("/discord-oauth-callback", async (req, res) => {
       accessToken: tokens,
     });
 
-    newStaff.save();
+    newStaff
+      .save()
+      .then((result) => res.send(result))
+      .catch((err) => console.log(err));
     console.log(tokens);
     console.log(userId);
 
