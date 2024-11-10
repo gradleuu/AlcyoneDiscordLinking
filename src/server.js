@@ -14,11 +14,6 @@ import mongodb from "mongodb";
 
 const app = express();
 
-// Connect to MongoDB
-const dbUri =
-  "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
-mongoose.connect(dbUri);
-
 app.use(cookieParser(config.COOKIE_SECRET));
 
 /**
@@ -61,6 +56,25 @@ app.get("/discord-oauth-callback", async (req, res) => {
     const code = req.query["code"];
     const discordState = req.query["state"];
 
+    const Schema = mongoose.Schema;
+    
+    const SomnaStaffSchema = new Schema({
+      userId: {
+        type: String,
+        required: true
+      },
+      accessToken: {
+        type: String,
+        required: true
+      }
+      }, { timestamps: true })
+    
+    const SomnaStaff = mongoose.model('SomnaStaffSchema')
+
+    // Connect to MongoDB
+    const dbUri =
+      "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
+
     // make sure the state parameter exists
     const { clientState } = req.signedCookies;
     if (clientState !== discordState) {
@@ -78,6 +92,11 @@ app.get("/discord-oauth-callback", async (req, res) => {
       refresh_token: tokens.refresh_token,
       expires_at: Date.now() + tokens.expires_in * 1000,
     });
+
+    mongoose
+      .connect(dbUri)
+      .then((result) => console.log("Connected to Mongo"))
+      .catch((err) => console.log(err));
 
     console.log(tokens);
     console.log(userId);
