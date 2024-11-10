@@ -1,9 +1,14 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
 import config from "./config.js";
 import * as discord from "./discord.js";
 import * as storage from "./storage.js";
+import * as somnaStaff from "./somnaStaff.js";
+
+const dbUri =
+  "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
 
 mongoose
   .connect(dbUri)
