@@ -16,5 +16,5 @@ const SomnaStaffSchema = new Schema(
   { timestamps: true }
 );
 
-const SomnaStaff = mongoose.model("Staff", SomnaStaffSchema);
+const SomnaStaff = mongoose.model("somnacreare-staff", SomnaStaffSchema);
 export default SomnaStaff;
