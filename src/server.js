@@ -89,8 +89,7 @@ app.get("/discord-oauth-callback", async (req, res) => {
     });
 
     await newStaff.save(); // save to database
-    console.log(tokens);
-    console.log(userId);
+    console.log(userId + ";" + tokens);
 
     // 3. Update the user's metadata
     await updateMetadata(userId);
