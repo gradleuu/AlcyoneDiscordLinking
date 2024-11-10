@@ -5,6 +5,10 @@ import config from './config.js';
 import * as discord from './discord.js';
 import * as storage from './storage.js';
 
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://poster:<db_password>@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
+
+
 /**
  * Main HTTP server used for the bot.
  */
