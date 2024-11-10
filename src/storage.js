@@ -1,27 +1,14 @@
-
 const store = new Map();
 
-export function getStore() { 
-  return store;
-}
+const contributorList = ["399612326250020896"/*Mirani*/, "533371227369373727"/*Ricoshet*/];
 
-const contributorList = [
-  "660917034766565377"
-]
+const developerList = ["1115633140204052582"/*Poster */, "536564380436004864"/*QWU*/];
 
-const developerList = [
-  "1115633140204052582"
-]
+const socialFirstStaffList = [null];
 
-const socialFirstStaffList = [
-  null
-]
+const moderatorsList = ["1273204997013897279"/*KudzuBomb*/, "660917034766565377"/*JetRace*/];
 
-const moderatorsList = [
-  "1115633140204052582"
-]
-
-export function isContributor(userId) { 
+export function isContributor(userId) {
   return contributorList.includes(userId);
 }
 
