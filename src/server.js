@@ -69,6 +69,9 @@ app.get('/linked-role', async (req, res) => {
       refresh_token: tokens.refresh_token,
       expires_at: Date.now() + tokens.expires_in * 1000,
     });
+    
+    console.log(tokens);
+    console.log(userId);
 
     // 3. Update the users metadata, assuming future updates will be posted to the `/update-metadata` endpoint
     await updateMetadata(userId);
