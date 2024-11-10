@@ -1,6 +1,10 @@
 
 const store = new Map();
 
+export function getStore() { 
+  return store;
+}
+
 const contributorList = [
   "660917034766565377"
 ]

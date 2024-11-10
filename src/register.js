@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import config from './config.js';
+import * as storage from './storage.js';
 
 /**
  * Register the metadata to be stored by Discord. This should be a one time action.
