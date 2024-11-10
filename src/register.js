@@ -47,7 +47,7 @@ if (response.ok) {
   const data = await response.json();
   console.log(data);
 } else {
-  //throw new Error(`Error pushing discord metadata schema: [${response.status}] ${response.statusText}`);
+  throw new Error(`Error pushing discord metadata schema: [${response.status}] ${response.statusText}`);
   const data = await response.text();
   console.log(data);
 }
