@@ -12,25 +12,19 @@ const body = [
   {
     key: 'isdeveloper',
     name: 'Developer',
-    description: 'Must be Developer',
+    description: 'Must be a part of Development team',
     type: 7,
   },
   {
-    key: 'iscontributor',
+    key: 'isadmin',
     name: 'Contributor',
-    description: 'Must be Contributor',
+    description: 'Must be a verified Administrator',
     type: 7,
   },
   {
     key: 'ismod',
     name: 'Moderator',
-    description: 'Must be Moderator',
-    type: 7,
-  },
-  {
-    key: 'issfs',
-    name: 'Social First Staff',
-    description: 'Must be Social First Staff (Mod/Dev)',
+    description: 'Must be a verified Moderator',
     type: 7,
   }
 ];
