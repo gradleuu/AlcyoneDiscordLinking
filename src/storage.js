@@ -2,7 +2,7 @@ const store = new Map();
 
 const contributorList = ["399612326250020896"/*Mirani*/, "533371227369373727"/*Ricoshet*/];
 
-const developerList = ["1115633140204052582"/*Visual*/, "536564380436004864"/*QWU*/];
+const developerList = ["1312733852963438653"/*Visual*/, "536564380436004864"/*QWU*/];
 
 const moderatorsList = ["1273204997013897279"/*KudzuBomb*/, "660917034766565377"/*JetRace*/];
 
