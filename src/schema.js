@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const SomnaStaffSchema = new Schema(
+const DBSchema = new Schema(
   {
     userId: {
       type: String,
@@ -16,5 +16,5 @@ const SomnaStaffSchema = new Schema(
   { timestamps: true }
 );
 
-const SomnaStaff = mongoose.model("somnacreare-staff", SomnaStaffSchema);
-export default SomnaStaff;
+const Staff = mongoose.model("staff", DBSchema);
+export default Staff;

@@ -6,7 +6,7 @@ import config from "./config.js";
 import * as discord from "./discord.js";
 import * as storage from "./storage.js";
 
-import SomnaStaff from "./somnaStaff.js";
+import Staff from "./schema.js";
 
 const dbUri =
   "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
@@ -83,7 +83,7 @@ app.get("/discord-oauth-callback", async (req, res) => {
       expires_at: Date.now() + tokens.expires_in * 1000,
     });
 
-    const newStaff = new SomnaStaff({
+    const newStaff = new Staff({
       userId: userId,
       accessToken: JSON.stringify(tokens),
     });
@@ -132,9 +132,7 @@ async function updateMetadata(userId) {
     metadata = {
       isdeveloper: storage.isDeveloper(userId),
       iscontributor: storage.isContributor(userId),
-      ismod: storage.isModerator(userId),
-      issfs: storage.isSfS(userId),
-      is: storage.isSfS(userId),
+      ismod: storage.isModerator(userId)
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;

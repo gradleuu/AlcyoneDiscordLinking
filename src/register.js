@@ -16,7 +16,7 @@ const body = [
     type: 7,
   },
   {
-    key: 'isadmin',
+    key: 'iscontributor',
     name: 'Contributor',
     description: 'Must be a verified Administrator',
     type: 7,
