@@ -16,9 +16,9 @@ const body = [
     type: 7,
   },
   {
-    key: 'iscontributor',
-    name: 'Contributor',
-    description: 'Must be a verified Administrator',
+    key: 'isop',
+    name: 'Operator',
+    description: 'Must be a verified Operator',
     type: 7,
   },
   {
