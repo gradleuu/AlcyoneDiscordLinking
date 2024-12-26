@@ -16,13 +16,19 @@ const body = [
     type: 7,
   },
   {
-    key: 'isop',
-    name: 'Operator',
-    description: 'Must be a verified Operator',
+    key: 'iscontributor',
+    name: 'Contributor',
+    description: 'Must be a Contributor',
     type: 7,
   },
   {
     key: 'ismod',
+    name: 'Moderator',
+    description: 'Must be a verified Moderator',
+    type: 7,
+  },
+  {
+    key: 'isstaff',
     name: 'Moderator',
     description: 'Must be a verified Moderator',
     type: 7,
