@@ -2,22 +2,25 @@ const store = new Map();
 
 const hmList = [];
 
-const developerList = ["1312733852963438653" /*Rattmann*/];
+const adminList = [
+  "1312733852963438653" /*Rattmann*/,
+  "1326957405275422850" /*Ararknos*/,
+  "660917034766565377" /*Jetrace*/,
+];
 
 const hordeMaster = [];
+[];
 
 const moderatorsList = [
-  "1273204997013897279" /*KudzuBomb*/,
-  "1312733852963438653" /*Rattmann*/,
-  "660917034766565377" /*JetRace*/
+  "1273204997013897279" /*KudzuBomb*/
 ];
 
 export function isHM(userId) {
   return hmList.includes(userId);
 }
 
-export function isDeveloper(userId) {
-  return developerList.includes(userId);
+export function isAdmin(userId) {
+  return adminList.includes(userId);
 }
 
 export function isModerator(userId) {

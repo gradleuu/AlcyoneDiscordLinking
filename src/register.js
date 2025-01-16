@@ -10,9 +10,9 @@ const url = `https://discord.com/api/v10/applications/${config.DISCORD_CLIENT_ID
 // supported types: number_lt=1, number_gt=2, number_eq=3 number_neq=4, datetime_lt=5, datetime_gt=6, boolean_eq=7
 const body = [
   {
-    key: 'isdeveloper',
-    name: 'Developer',
-    description: 'Must be a Developer',
+    key: 'isadmin',
+    name: 'Admin',
+    description: 'Must be an Admin',
     type: 7,
   },
   {
