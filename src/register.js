@@ -11,14 +11,14 @@ const url = `https://discord.com/api/v10/applications/${config.DISCORD_CLIENT_ID
 const body = [
   {
     key: 'isadmin',
-    name: 'Admin',
-    description: 'Must be an Admin',
+    name: 'Leader',
+    description: 'One of the Leaders!',
     type: 7,
   },
   {
     key: 'ismod',
     name: 'Watcher',
-    description: 'Must be a watcher',
+    description: 'Our fellow watcher, The Cross for the clan!',
     type: 7,
   }
 ];

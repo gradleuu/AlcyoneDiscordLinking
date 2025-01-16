@@ -130,7 +130,7 @@ async function updateMetadata(userId) {
   try {
     // Fetch or generate metadata
     metadata = {
-      isdeveloper: storage.isDeveloper(userId),
+      isadmin: storage.isAdmin(userId),
       ismod: storage.isModerator(userId)
     };
   } catch (e) {
