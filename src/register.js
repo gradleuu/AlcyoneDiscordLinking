@@ -16,19 +16,7 @@ const body = [
     type: 7,
   },
   {
-    key: 'iscontributor',
-    name: 'Contributor',
-    description: 'Must be a Contributor',
-    type: 7,
-  },
-  {
     key: 'ismod',
-    name: 'Moderator',
-    description: 'Must be a verified Moderator',
-    type: 7,
-  },
-  {
-    key: 'isstaff',
     name: 'Moderator',
     description: 'Must be a verified Moderator',
     type: 7,
