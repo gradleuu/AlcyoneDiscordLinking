@@ -1,6 +1,6 @@
 const store = new Map();
 
-const opList = [];
+const hmList = [];
 
 const developerList = ["1312733852963438653" /*Rattmann*/];
 
@@ -9,11 +9,11 @@ const hordeMaster = [];
 const moderatorsList = [
   "1273204997013897279" /*KudzuBomb*/,
   "1312733852963438653" /*Rattmann*/,
-  "660917034766565377" /*JetRace*/,
+  "660917034766565377" /*JetRace*/
 ];
 
 export function isHM(userId) {
-  return opList.includes(userId);
+  return hmList.includes(userId);
 }
 
 export function isDeveloper(userId) {

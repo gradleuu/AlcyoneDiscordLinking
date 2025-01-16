@@ -12,13 +12,13 @@ const body = [
   {
     key: 'isdeveloper',
     name: 'Developer',
-    description: 'Must be a part of Development team',
+    description: 'Must be a Developer',
     type: 7,
   },
   {
     key: 'ismod',
-    name: 'Moderator',
-    description: 'Must be a verified Moderator',
+    name: 'Watcher',
+    description: 'Must be a watcher',
     type: 7,
   }
 ];

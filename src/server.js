@@ -131,7 +131,6 @@ async function updateMetadata(userId) {
     // Fetch or generate metadata
     metadata = {
       isdeveloper: storage.isDeveloper(userId),
-      isop: storage.isOp(userId),
       ismod: storage.isModerator(userId)
     };
   } catch (e) {
