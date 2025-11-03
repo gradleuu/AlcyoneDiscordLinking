@@ -29,14 +29,14 @@ async function registerMetadataSchema() {
   const body = [
     {
       key: 'isadmin',
-      name: 'Leader',
-      description: 'One of the Leaders!',
+      name: 'Admin/Developer',
+      description: 'Alcyone Admin/Developer',
       type: 7,
     },
     {
       key: 'ismod',
-      name: 'Watcher',
-      description: 'Our fellow watcher, The Cross for the clan!',
+      name: 'Orphion',
+      description: 'Orphion Developer',
       type: 7,
     }
   ];
