@@ -3,9 +3,7 @@ const store = new Map();
 const hmList = [];
 
 const adminList = [
-  "1312733852963438653" /*Rattmann*/,
-  "1326957405275422850" /*Ararknos*/,
-  "660917034766565377" /*Jetrace*/,
+  "1312733852963438653" /*Rattmann*/
 ];
 
 const hordeMaster = [];
