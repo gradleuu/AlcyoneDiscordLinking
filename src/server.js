@@ -1,15 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
+import fetch from 'node-fetch';
 
 import config from "./config.js";
 import * as discord from "./discord.js";
 import * as storage from "./storage.js";
 
 import Staff from "./schema.js";
-
-const dbUri =
-  "mongodb+srv://poster:J5r3xlMyJ5k36U9t@somnacreare.in65n.mongodb.net/?retryWrites=true&w=majority&appName=Somnacreare";
 
 mongoose
   .connect(dbUri, {
@@ -20,6 +18,51 @@ mongoose
   })
   .then(() => console.log("Connected to Mongo"))
   .catch((err) => console.log("MongoDB connection error:", err));
+
+/**
+ * Register the metadata schema with Discord
+ * This runs once when the server starts
+ */
+async function registerMetadataSchema() {
+  const url = `https://discord.com/api/v10/applications/${config.DISCORD_CLIENT_ID}/role-connections/metadata`;
+  
+  const body = [
+    {
+      key: 'isadmin',
+      name: 'Leader',
+      description: 'One of the Leaders!',
+      type: 7,
+    },
+    {
+      key: 'ismod',
+      name: 'Watcher',
+      description: 'Our fellow watcher, The Cross for the clan!',
+      type: 7,
+    }
+  ];
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bot ${config.DISCORD_TOKEN}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('✅ Successfully registered metadata schema with Discord:', data);
+    } else {
+      const errorText = await response.text();
+      console.error(`❌ Error registering metadata schema: [${response.status}] ${response.statusText}`);
+      console.error('Response:', errorText);
+    }
+  } catch (error) {
+    console.error('❌ Failed to register metadata schema:', error);
+  }
+}
 
 /**
  * Main HTTP server used for the bot.
@@ -142,6 +185,10 @@ async function updateMetadata(userId) {
 }
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`App listening on port ${port}`);
+  
+  // Register metadata schema with Discord on startup
+  console.log('🔄 Registering metadata schema with Discord...');
+  await registerMetadataSchema();
 });
