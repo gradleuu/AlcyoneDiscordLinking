@@ -9,15 +9,15 @@ import * as storage from "./storage.js";
 
 import Staff from "./schema.js";
 
-mongoose
-  .connect(dbUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    connectTimeoutMS: 30000,  // Set connection timeout to 30 seconds
-    socketTimeoutMS: 45000,   // Set socket timeout to 45 seconds
-  })
-  .then(() => console.log("Connected to Mongo"))
-  .catch((err) => console.log("MongoDB connection error:", err));
+// mongoose
+//   .connect(dbUri, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     connectTimeoutMS: 30000,  // Set connection timeout to 30 seconds
+//     socketTimeoutMS: 45000,   // Set socket timeout to 45 seconds
+//   })
+//   .then(() => console.log("Connected to Mongo"))
+//   .catch((err) => console.log("MongoDB connection error:", err));
 
 /**
  * Register the metadata schema with Discord
@@ -131,7 +131,7 @@ app.get("/discord-oauth-callback", async (req, res) => {
       accessToken: JSON.stringify(tokens),
     });
 
-    await newStaff.save(); // save to database
+    // await newStaff.save(); // save to database
     console.log(userId + ";" + tokens);
 
     // 3. Update the user's metadata
