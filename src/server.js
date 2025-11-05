@@ -29,14 +29,20 @@ async function registerMetadataSchema() {
   const body = [
     {
       key: 'isadmin',
-      name: 'Admin/Developer',
-      description: 'Alcyone Admin/Developer',
+      name: 'Auriga',
+      description: 'Must be an Auriga of the Alcyone',
       type: 7,
     },
     {
       key: 'ismod',
-      name: 'Orphion',
-      description: 'Orphion Developer',
+      name: 'Orphion Developer',
+      description: 'Must be one of the Orphion Developers',
+      type: 7,
+    },
+    {
+      key: 'ishm',
+      name: 'Alcyone Member',
+      description: 'Must be one of the Alcyone Members',
       type: 7,
     }
   ];
@@ -174,7 +180,8 @@ async function updateMetadata(userId) {
     // Fetch or generate metadata
     metadata = {
       isadmin: storage.isAdmin(userId),
-      ismod: storage.isModerator(userId)
+      ismod: storage.isModerator(userId),
+      ishm: storage.isHM(userId)
     };
   } catch (e) {
     e.message = `Error fetching external data: ${e.message}`;
